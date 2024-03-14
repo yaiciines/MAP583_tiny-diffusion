@@ -1,82 +1,38 @@
-# DL-DIY potential project ideas
+# Tiny diffusion
 
-- read the paper and understand the approach
-- reproduce the results with simple datasets
-- try to make it work with MNIST
+## Project Overview
 
-# tiny-diffusion
+Tiny Diffusion is an innovative project that explores the functionality of diffusion models. The mathematical foundations of the project highlight the advantages of a step-by-step approach to explicit probability distribution modelling. Despite the sequential nature of the operation, which can be time consuming and less adept at detecting patterns based on partial normal distributions, the project has demonstrated significant potential on various datasets.
 
-A minimal PyTorch implementation of probabilistic diffusion models for 2D datasets. Get started by running `python ddpm.py -h` to explore the available options for training.
+## Mathematical foundations
 
-## Forward process
+The core of Tiny Diffusion lies in the forward and backward processes of diffusion models, which iteratively learn the distribution of the data through a series of transformations. This project not only addresses the inherent mathematical challenges, but also proposes innovative solutions to overcome them.
 
-A visualization of the forward diffusion process being applied to a dataset of one thousand 2D points. Note that the dinosaur is not a single training example, it represents each 2D point in the dataset.
+## Experiments with new datasets
 
-![](static/forward.png)
+The team tested the model on three additional datasets, including a 3D dataset, to assess its versatility and robustness. A particular challenge was the model's failure to detect lines, which was ingeniously solved by densifying the data points with uniform and Poisson distributions.
 
-## Reverse process
+## Diffusion on the MNIST dataset
 
-This illustration shows how the reverse process recovers the distribution of the training data.
+The project took a unique approach to learning the underlying distribution of the images in the MNIST dataset, comparing it to 'points of a dinosaur' to visualise the concept. The original code was adapted from a 2D to a 28x28 dimension to accommodate the MNIST dataset, using a simple CNN structure including Conv2D, BatchNorm2D, ReLU, ConvTranspose2D and additional Conv2D layers.
 
-![](static/reverse.png)
+## Implementation and Improvements
 
-## Ablations
+The team implemented time-step in a number of ways to improve model performance, including comparison to the initial image, comparison to the previous image, and introduction of noise. These implementations were crucial in improving the model's noise removal capabilities without the need to generate new images from randomly noisy inputs.
 
-I have run a series of ablations experiments on hyperparameters, such as learning rate and model size, and visualized the learning process. The columns in the graphs represent the checkpoint epoch, and the rows indicate the hyperparameter values. Each cell displays one thousand generated 2D points.
+## Generating numbers from prompts
 
-### learning rate
+One of the breakthroughs of the project was the generation of numbers from prompts. By conditioning the distribution with labels and changing the learning approach from unsupervised to semi-supervised, the model showed significant improvements. Various hyperparameters were tested to fine-tune the model, with the final settings set to 25 epochs, a learning rate of 2e-4, a hidden size of 128, and five hidden layers.
 
-![](static/learning_rate.png)
+## Conclusion
 
-The learning process is sensitive to the learning rate. At first, the model's output was poor, causing me to suspect a bug. However, simply changing the learning rate value resolved the problem.
+Tiny Diffusion has opened up new ways of understanding and harnessing the power of diffusion models. The findings and methods developed in this project could be instrumental for further research and applications in various fields of machine learning and artificial intelligence.
 
-### dataset
+## Team
 
-![](static/datasets.png)
+- Céleste GALLIEN
+- Samson GOUREVITCH
+- Laurine MEIER
+- Ines YAICI
 
-The current model configuration doesn't work well on the `line` dataset, which I consider the most basic among them. The corners should be clear and sharp, but they are fuzzy.
-
-### num timesteps
-
-![](static/num_timesteps.png)
-
-A longer diffusion process results in a better output. With fewer timesteps, the dinosaur is incomplete, missing points from the top and bottom.
-
-### variance schedule
-
-![](static/beta_schedule.png)
-
-The quadratic schedule does not yield better results. Other schedules like cosine or sigmoid should also be considered.
-
-### hidden size
-
-![](static/hidden_size.png)
-
-The capacity of the model doesn't seem to be a bottleneck, as similar results are obtained across various hidden layer sizes.
-
-### number of hidden layers
-
-![](static/num_hidden_layers.png)
-
-As in the hidden size ablation run, the capacity of the model does not seem to be a limiting factor.
-
-### positional embedding (timestep)
-
-![](static/time_embedding.png)
-
-The model benefits from the timestep information, but the specific method of encoding the timestep is not important.
-
-### positional embedding (inputs)
-
-![](static/input_embedding.png)
-
-The use of sinusoidal embeddings for the inputs helps with learning high-frequency functions in low-dimensional problem domains, such as mapping each (x, y) pixel coordinate to (r, g, b) color, as demonstrated in [this study](https://bmild.github.io/fourfeat/). The same holds true in the current scenario.
-
-## References
-
-* The dino dataset comes from the [Datasaurus Dozen](https://www.autodesk.com/research/publications/same-stats-different-graphs) data.
-* HuggingFace's [diffusers](https://github.com/huggingface/diffusers) library.
-* lucidrains' [DDPM implementation in PyTorch](https://github.com/lucidrains/denoising-diffusion-pytorch).
-* Jonathan Ho's [implementation of DDPM](https://github.com/hojonathanho/diffusion).
-* InFoCusp's [DDPM implementation in tf](https://github.com/InFoCusp/diffusion_models).
-
+Date of Presentation: 15 March 2024
