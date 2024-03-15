@@ -26,7 +26,7 @@ Finally, we tried to generate numbers from prompts. By conditioning the distribu
 
 ## Conclusion
 
-Tiny Diffusion helped us understand and and use diffusion models better. The findings and methods developed in this project could be good bases for further research and applications in various fields of machine learning and artificial intelligence.
+Tiny Diffusion helped us understand and use diffusion models better. The findings and methods developed in this project could be good bases for further research and applications in various fields of machine learning and artificial intelligence.
 
 ## Team
 
