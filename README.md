@@ -18,7 +18,7 @@ The project took a unique approach to learning the underlying distribution of th
 
 ## Implementation and Improvements
 
-The team implemented time-step in a number of ways to improve model performance, including comparison to the initial image, comparison to the previous image, and introduction of noise. These implementations were crucial in improving the model's noise removal capabilities without the need to generate new images from randomly noisy inputs.
+We implemented time-step in a number of ways to improve model performance, including comparison to the initial image, comparison to the previous image, and introduction of noise. These implementations were crucial in improving the model's noise removal capabilities without the need to generate new images from randomly noisy inputs.
 
 ## Generating numbers from prompts
 
