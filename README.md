@@ -10,7 +10,7 @@ The core of Tiny Diffusion lies in the forward and backward processes of diffusi
 
 ## Experiments with new datasets
 
-The team tested the model on three additional datasets, including a 3D dataset, to assess its versatility and robustness. A particular challenge was the model's failure to detect lines, which was ingeniously solved by densifying the data points with uniform and Poisson distributions.
+We tested the model on three additional datasets, including a 3D dataset, to assess its versatility and robustness. A particular challenge was the model's failure to detect lines, which was ingeniously solved by densifying the data points with uniform and Poisson distributions.
 
 ## Diffusion on the MNIST dataset
 
